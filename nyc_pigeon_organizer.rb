@@ -8,5 +8,13 @@ triple_list = data.reduce([]) do |triple_list, (characteristic, value_hash) |
   end
 end
 
+grouped = triple_list.group_by { |(c, v, bird)| bird }
+
+mapped = group.map do |bird, triple_list|
+  [bird, triple_list.group_by {|(c, v, bird) | c }]
+end
+
+hashed = mapped.to_h 
+
 
 end
