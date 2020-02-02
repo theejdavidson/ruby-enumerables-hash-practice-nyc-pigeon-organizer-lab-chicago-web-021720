@@ -16,5 +16,17 @@ end
 
 hashed = mapped.to_h 
 
+transformed = hashed.map do | bird, category_hash|
+  category_values_pair = category_hash.map do |characteristic, triple_list|
+    #pp triple_list
+    values = triple_list.reduce([]) do |memo, (c, v, bird)|
+      memo << v
+    end
+    [characteristic, values]
+  end
 
+  [ bird, category_values_pair.to_h ]
+end
+
+transformed.to_h
 end
