@@ -10,7 +10,7 @@ end
 
 grouped = triple_list.group_by { |(c, v, bird)| bird }
 
-mapped = group.map do |bird, triple_list|
+mapped = grouped.map do |bird, triple_list|
   [bird, triple_list.group_by {|(c, v, bird) | c }]
 end
 
